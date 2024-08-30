@@ -1,0 +1,155 @@
+{% extends 'home.html' %}
+
+{% block content %}
+ <style>
+    /* Basic styling for the page */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container Styles */
+.container {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Header Styles */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+/* Form Group Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Input Styles */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+}
+
+input[type="file"] {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+}
+
+/* Error Messages */
+.form-group .errorlist {
+    font-size: 0.875rem;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+ </style>
+   
+    <div class="container">
+        <h2>Register</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_username">First name</label>
+                {{ form.first_name}}
+                {{ form.first_name.errors }}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Last name</label>
+                {{ form.last_name }}
+                {{ form.last_name.errors }}
+            </div>
+            <div class="form-group">
+                <label for="id_password1">Mobile</label>
+                {{ form.mobile }}
+                {{ form.mobile.errors }}
+            </div>
+            <div class="form-group">
+                <label for="id_password2">Email</label>
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_password2">Photo</label>
+                {{ form.photo }}
+                {{ form.photo.errors }}
+            </div>
+            <div class="form-group">
+                <label for="id_password2">Gender</label>
+                {{ form.gender }}
+                {{ form.gender.errors }}
+            </div>
+            <div class="form-group">
+                <label for="id_password2">Department</label>
+                {{ form.departement }}
+                {{ form.departement.errors }}
+            </div>
+            <div class="form-group">
+                <label for="id_password2">Language</label>
+                {{ form.language }}
+                {{ form.language.errors }}
+            </div>
+            <div class="form-group">
+                <label for="id_password2">Manth salary</label>
+                {{ form.month_salary }}
+                {{ form.month_salary.errors }}
+            </div>
+            <div class="form-group">
+                <label for="id_password2">Account number</label>
+                {{ form.account_number }}
+                {{ form.account_number.errors }}
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+   
+    {% endblock %}
+    
+
+
+
+

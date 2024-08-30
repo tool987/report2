@@ -1,0 +1,87 @@
+
+{% extends 'home.html' %}
+{% block content %}
+    <style>
+        /* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+/* Profile Container */
+.profile-container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+    margin-top: 60px;
+}
+
+/* Profile Picture */
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Profile Details */
+.profile-details {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-details h1 {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+.profile-details p {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+/* Update Button */
+.update-btn {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.update-btn:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <img src="{{each.photo.url}}" alt="User Profile Picture" class="profile-pic">
+        <div class="profile-details">
+            <h1>{{each.first_name}} {{each.last_name}}</h1>
+            <p><strong>Gender:</strong> {{each.gender}}</p>
+            <p><strong>Mobile:</strong> {{each.mobile}}</p>
+            <p><strong>Email:</strong> {{each.email}}</p>
+            <p><strong>Department:</strong> {{each.departement}}</p>
+            <p><strong>Language:</strong> {{each.language}}</p>
+            <p><strong>Monthly Salary:</strong> {{each.month_salary}}</p>
+            <p><strong>Enrollment Date:</strong> {{each.enrollment_date}}</p>
+            <p><strong>Account Number:</strong> {{each.account_number}}</p>
+        </div>
+        <a href="{% url 'update' each.id %}" class="update-btn">Update</a>
+    </div>
+</body>
+{% endblock %}

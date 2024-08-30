@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRMS Homepage</title>
+   <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #333; /* Dark background color */
+    color: white; /* Text color for better contrast */
+    padding: 10px 20px; /* Padding around the header content */
+    position: fixed; /* Make the header fixed at the top */
+    width: 100%; /* Ensure the header takes full width */
+    top: 0;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight shadow for depth */
+}
+
+/* Navbar Container */
+.top-navbar {
+    display: flex;
+    justify-content: space-between; /* Aligns items to the left and right */
+    align-items: center; /* Vertically centers items */
+    max-width: 1200px; /* Optional: Max width for container */
+    margin: 0 auto; /* Center container horizontally */
+}
+
+/* Navbar Items */
+.navbar-left, .navbar-right {
+    list-style: none; /* Remove bullets */
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-left li, .navbar-right li {
+    margin: 0 15px; /* Space between items */
+}
+
+.navbar-left a, .navbar-right a {
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Padding for better click area */
+    display: block; /* Make the link area block-level for padding */
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.navbar-left a:hover, .navbar-right a:hover {
+    background-color: #555; /* Darker background on hover */
+}
+
+/* Center Text */
+.header-title {
+    font-size: 1.5rem; /* Font size for the title */
+    font-weight: bold; /* Bold text */
+    color: white; /* Text color */
+}
+
+/* Main Content */
+main {
+    margin-top: 60px; /* Offset for the fixed header */
+    padding: 20px;
+    flex: 1;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+p, ul {
+    line-height: 1.6;
+    color: #666;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+    width: 100%;
+}
+
+   </style>
+</head>
+<body>
+    <header>
+        <div class="top-navbar">
+            <ul class="navbar-left">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'recur' %}">Job Application</a></li>
+                <li><a href="{% url 'login' %}">Admin</a></li>
+            </ul>
+            <div class="header-title">HRMS</div>
+            <ul class="navbar-right">
+                <li>Human Resource Management System</li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Welcome to the Human Resource Management System</h1>
+            <p>The Human Resource Management System (HRMS) is designed to streamline and manage all HR-related tasks efficiently. It provides a comprehensive platform for managing employee records, recruitment processes, attendance tracking, and departmental organization. The system offers the following key features:</p>
+            <ul>
+                <li><strong>Employee Management:</strong> Maintain detailed records of employees including personal details, job roles, and contact information.</li>
+                <li><strong>Recruitment:</strong> Manage job postings, applications, and hiring processes effectively.</li>
+                <li><strong>Attendance Tracking:</strong> Monitor and record employee attendance, including leave requests and absences.</li>
+                <li><strong>Department Management:</strong> Organize employees into departments and manage departmental information.</li>
+                <li><strong>Reports and Analytics:</strong> Generate reports on various HR metrics and analyze data for better decision-making.</li>
+            </ul>
+            <p>Our HRMS aims to improve operational efficiency, enhance productivity, and ensure better management of human resources within an organization. It is user-friendly, secure, and customizable to meet the specific needs of your organization.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 HRMS Project. All rights reserved.</p>
+    </footer>
+</body>
+</html>

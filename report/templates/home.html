@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+ <style>
+   
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: brown; /* Dark background color */
+    color: white; /* Text color for better contrast */
+    padding: 10px 20px; /* Padding around the header content */
+    position: fixed;
+    width: 100%; /* Make the header fixed at the top */
+    margin-left:200px; /* Ensure the header takes full width */
+    top: 0;
+    right: 0;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight shadow for depth */
+}
+
+/* Navbar Container */
+.top-navbar {
+    display: flex;
+    justify-content: space-between; /* Aligns items to the left and right */
+    align-items: center; /* Vertically centers items */
+    max-width: 1200px; /* Optional: Max width for container */
+    margin-left: 90%; /* Center container horizontally */
+    flex-wrap: wrap; /* Allow wrapping */
+}
+
+/* Navbar Items */
+
+/* Center Text */
+.header-title {
+    font-size: 1.5rem; /* Font size for the title */
+    font-weight: bold; /* Bold text */
+    color: white; /* Text color */
+}
+
+/* User Info */
+.user-info {
+    display: flex;
+    flex-direction: column; /* Stack the image and username vertically */
+    align-items: center; /* Center horizontally */
+    color: white;
+    margin-left: 0%;
+}
+
+.user-image {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    border-radius: 50%; /* Circular image */
+    margin-bottom: 5px; /* Space between image and username */
+}
+
+.username {
+    font-size: 0.9rem; /* Font size for username */
+}
+
+aside {
+    width: 200px;
+    background-color: #444;
+    padding-top: 60px; /* To avoid overlap with the top navbar */
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+.navbar {
+    padding: 15px;
+}
+.navbar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-list-left, .nav-list-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-list-left li, .nav-list-right li {
+    margin-bottom: 10px;
+}
+
+.nav-list-left li a, .nav-list-right li a {
+    color: white;
+    text-align: left;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    border-radius: 4px;
+}
+
+.nav-list-left li a:hover, .nav-list-right li a:hover {
+    background-color: #575757;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #575757;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    left: 200px; /* To open the dropdown beside the aside */
+    top: 0;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #696969;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #575757;
+}
+
+main {
+    margin-left: 220px; /* Offset for the aside */
+    padding-top: 70px; /* Offset for the top navbar */
+    padding: 20px;
+    flex: 1;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    line-height: 1.6;
+    color: #666;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+    width: 100%;
+}
+
+ </style>
+    
+</head>
+<body> 
+{% if request.user.is_authenticated %}
+    <header>
+        <div class="top-navbar">
+                <div class="user-info">
+                    <img src="{{ user.photo.url }}" alt="User Profile Picture" class="user-image">
+                    <span class="username">{{user.username}}</span>
+                </div>
+               
+           
+        </div>
+    </header>
+{% endif %}
+    <aside>
+        <nav class="navbar">
+            <!-- Dropdown list on the left -->
+            <ul class="nav-list-left">
+                <li class="dropdown">
+                    <img src="{{user.photo.url}}" alt="no emage">
+                    <span class="username">{{user.username}}</span>
+                    <a href="{% url 'userprofile' %}" class="dropbtn">Dashboard</a>
+                    
+                </li>
+            </ul>
+
+            <!-- Menu items on the right -->
+                <ul class="nav-list-right"><li><a href="{% url 'employee' %}">Employee</a></li></ul>
+                <ul class="nav-list-right"><li><a href="{% url 'attendence' %}">Attendence</a></li></ul>
+                <ul class="nav-list-right"><li><a href="{% url 'leave' %}">leave</a></li></ul>
+                <ul class="nav-list-right"><li><a href="#">Department</a></li></ul>
+                <ul class="nav-list-right"><li><a href="{% url 'register' %}">New Department</a></li></ul>
+                <ul class="nav-list-right"><li><a href="{% url 'applicant' %}">Applicant</a></li></ul>
+                <ul class="nav-list-right"><li><a href="{% url 'logout' %}">logout</a></li></ul>
+           
+        </nav>
+    </aside>
+
+    <main>
+        {% block content %}
+        <div class="container">
+            <h1>Welcome to Your Homepage</h1>
+            <p>Welcome to Our User Management System
+
+               
+What is Lorem Ipsum?
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+Why do we use it?
+
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+Where does it come from?
+
+Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+
+        {%  endblock %} 
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Django Project. All rights reserved.</p>
+    </footer>
+</body>
+</html>
